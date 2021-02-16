@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import Message from "./Message";
 import axios from "axios";
+import { parse } from "papaparse";
+import csvtojson from "csvtojson";
 
 import "./FileUpload.css";
+import GenerateTree from "./GenerateTree";
+import RenderData from "./RenderData";
 
 const FileUpload = () => {
   const [file, setFile] = useState("");
@@ -33,29 +37,31 @@ const FileUpload = () => {
 
       setMessage("File Uploaded");
     } catch (err) {
-      if (err.response.status === 500) {
-        setMessage("There was a problem with the server");
-      } else {
-        setMessage(err.response.data.msg);
+      if (err) {
+        console.log(err);
       }
     }
   };
 
   return (
-    <div className='FileUpload'>
-      {message && <Message msg={message} />}
-      <form onSubmit={onSubmitHandler}>
-        <div className='ui fluid input'>
-          <input
-            type='file'
-            onChange={onChangeHandler}
-            placeholder={filename}
-          />
-        </div>
-        <div className='btn'>
-          <input type='submit' value='Upload' className=' ui button green' />
-        </div>
-      </form>
+    <div>
+      <div className='FileUpload'>
+        {message && <Message msg={message} />}
+        <form onSubmit={onSubmitHandler}>
+          <div className='ui fluid input'>
+            <input
+              type='file'
+              onChange={onChangeHandler}
+              placeholder={filename}
+            />
+          </div>
+          <div className='btn'>
+            <input type='submit' value='Upload' className='ui button green' />
+          </div>
+        </form>
+      </div>
+
+      {uploadedFile.filePath && <GenerateTree />}
     </div>
   );
 };
