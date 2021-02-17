@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import Message from "./Message";
 import axios from "axios";
-import { parse } from "papaparse";
-import csvtojson from "csvtojson";
 
 import "./FileUpload.css";
 import GenerateTree from "./GenerateTree";
@@ -40,13 +38,6 @@ const FileUpload = () => {
         console.log(err);
       }
     }
-  };
-
-  const shareFileDetails = () => {
-    return {
-      fileName: uploadedFile.fileName,
-      filePath: uploadedFile.filePath,
-    };
   };
 
   return (
