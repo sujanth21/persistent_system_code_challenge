@@ -1,4 +1,5 @@
 const { v4: uuidv4 } = require("uuid");
+const path = require("path");
 //File details to pass between routes or controllers
 let filename = "";
 let filepath = "";
@@ -14,6 +15,13 @@ exports.uploadFile = (req, res) => {
   const file = req.files.file;
   filename = uuidv4() + file.name;
   filepath = `/uploads/${filename}`;
+
+  let extname = path.extname(file.name);
+  let fileType = [".csv"];
+
+  if (!fileType.includes(extname)) {
+    return res.status(400).json({ msg: "Invalid CSV file" });
+  }
 
   file.mv(`${__dirname}/../client/public/uploads/${filename}`, (err) => {
     if (err) {

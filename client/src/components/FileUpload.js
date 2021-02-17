@@ -35,7 +35,8 @@ const FileUpload = () => {
       setMessage("File Uploaded");
     } catch (err) {
       if (err) {
-        console.log(err);
+        setMessage(err.response.data.msg);
+        console.log(err.response.data.msg);
       }
     }
   };
