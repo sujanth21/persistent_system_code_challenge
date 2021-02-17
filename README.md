@@ -28,12 +28,14 @@ Also, the following third-party libraries used in this project to handle API cal
 
 ## Project Execution
 
-1. Execute `npm run dev` in the commandline (inside the project folder)
-2. Go to http:localhost:3000 (Usually new tab will open with the localhost url after executing the above command)
-3. Choose the CSV file and Click the `Upload` button on the page
-4. If the file successfully uploaded to the server, page will display a success message
-5. Then click the `Get Results` button to view the outputs
-6. To check the converted JSON data, go to `http://localhost:5000/data`
+1. Download or clone the project and cd to the project file
+2. Execute `npm install` to install all the dependencies
+3. Execute `npm run dev` in the commandline (inside the project folder)
+4. Go to http:localhost:3000 (Usually new tab will open with the localhost url after executing the above command)
+5. Choose the CSV file and Click the `Upload` button on the page
+6. If the file successfully uploaded to the server, page will display a success message
+7. Then click the `Get Results` button to view the outputs
+8. To check the converted JSON data, go to `http://localhost:5000/data`
 
 ## The development processes
 
