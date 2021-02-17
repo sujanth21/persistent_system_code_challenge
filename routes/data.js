@@ -67,19 +67,21 @@ router.get("/", async (req, res) => {
   res.append("Access-Control-Allow-Origin", "*");
 
   const fileDetails = shareFileDetails();
-  console.log(`File Details: ${fileDetails.filename}`);
-  // const filePath = `${__dirname}/../client/public/uploads/source.csv`;
-  const filePath = `${__dirname}/../client/public/uploads/${fileDetails.filename}`;
+  if (fileDetails.filename !== "") {
+    console.log(`File Details: ${fileDetails.filename}`);
+    // const filePath = `${__dirname}/../client/public/uploads/source.csv`;
+    const filePath = `${__dirname}/../client/public/uploads/${fileDetails.filename}`;
 
-  const jsonArray = await csvtojson().fromFile(filePath);
+    const jsonArray = await csvtojson().fromFile(filePath);
 
-  generateTree(jsonArray)
-    .then((data) => {
-      data.forEach(loopJSON);
+    generateTree(jsonArray)
+      .then((data) => {
+        data.forEach(loopJSON);
 
-      res.json(data);
-    })
-    .catch((err) => console.log(err));
+        res.json(data);
+      })
+      .catch((err) => console.log(err));
+  }
 });
 
 module.exports = router;
