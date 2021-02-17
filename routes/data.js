@@ -1,5 +1,6 @@
 const express = require("express");
 const csvtojson = require("csvtojson");
+const { shareFileDetails } = require("../controllers/uploads");
 
 const router = express.Router();
 
@@ -64,7 +65,11 @@ const loopJSON = (data) => {
 
 router.get("/", async (req, res) => {
   res.append("Access-Control-Allow-Origin", "*");
-  const filePath = `${__dirname}/../client/public/uploads/source.csv`;
+
+  const fileDetails = shareFileDetails();
+  console.log(`File Details: ${fileDetails.filename}`);
+  // const filePath = `${__dirname}/../client/public/uploads/source.csv`;
+  const filePath = `${__dirname}/../client/public/uploads/${fileDetails.filename}`;
 
   const jsonArray = await csvtojson().fromFile(filePath);
 

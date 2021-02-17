@@ -42,6 +42,13 @@ const FileUpload = () => {
     }
   };
 
+  const shareFileDetails = () => {
+    return {
+      fileName: uploadedFile.fileName,
+      filePath: uploadedFile.filePath,
+    };
+  };
+
   return (
     <div>
       <div className='FileUpload'>
