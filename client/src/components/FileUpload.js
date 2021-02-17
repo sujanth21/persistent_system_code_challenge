@@ -6,7 +6,6 @@ import csvtojson from "csvtojson";
 
 import "./FileUpload.css";
 import GenerateTree from "./GenerateTree";
-import RenderData from "./RenderData";
 
 const FileUpload = () => {
   const [file, setFile] = useState("");

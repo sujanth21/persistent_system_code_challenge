@@ -47,30 +47,26 @@ const loopJSON = (data) => {
     sum = 0;
     sum += Number(data.utilisation);
   }
-  // console.log(sum);
-  // console.log(`${Number(data.utilisation)} / ${Number(data.limit)}`);
 
   Array.isArray(data.children) && data.children.forEach(loopJSON);
   const max_limit = Math.max(data.limit);
 
   if (data.parent === "") {
-    // console.log("Sum is " + sum);
     data.total_utilisation = sum;
     data.maximum_limit = max_limit;
     if (data.total_utilisation > data.maximum_limit) {
       data.final_result = `Limit breached at ${data.entity}, (limit = ${data.limit},direct utilisation = ${data.utilisation}, combined utilisation = ${data.total_utilisation})`;
     } else {
-      data.result = "No limit breaches";
+      data.final_result = "No limit breaches";
     }
   }
 };
 
 router.get("/", async (req, res) => {
   res.append("Access-Control-Allow-Origin", "*");
-  const filePath = `${__dirname}/../client/public/uploads/source2.csv`;
+  const filePath = `${__dirname}/../client/public/uploads/source.csv`;
 
   const jsonArray = await csvtojson().fromFile(filePath);
-  //   res.json(jsonArray);
 
   generateTree(jsonArray)
     .then((data) => {

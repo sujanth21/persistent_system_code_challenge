@@ -7,27 +7,30 @@ const GenerateTree = () => {
     e.preventDefault();
 
     const response = await axios.get("http://localhost:5000/data");
+    setResults(() => [response.data]);
 
-    setResults(response.data);
-
-    // console.log("Response: " + response);
-    // const data = response.data[0];
-    // console.log(data.final_result);
-    response.data.map((record) => {
-      //Need to add the arrays to results --- ***
-      setResults(record);
-      // console.log(record.final_result);
-    });
-
-    console.log(results);
+    // console.log(results);
   };
   return (
     <div className='ui segment'>
-      <form onSubmit={onFormSubmit}>
+      <form onSubmit={onFormSubmit} style={{ marginBottom: "20px" }}>
         <input type='submit' value='Get Results' className='ui button green' />
       </form>
 
-      <div>{}</div>
+      <div>
+        {results.length > 0 && (
+          <div>
+            {results[0].map((record, idx) => {
+              // console.log(record);
+              return (
+                <div className='ui message' key={idx}>{`Record ${idx + 1}: ${
+                  record.final_result
+                }`}</div>
+              );
+            })}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
