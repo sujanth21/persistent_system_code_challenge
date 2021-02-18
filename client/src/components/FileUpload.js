@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Message from "./Message";
-import axios from "axios";
+import { uploadFile } from "../services";
 import { toggleButton, toggleElement } from "../helper";
 
 import "./FileUpload.css";
@@ -24,11 +24,8 @@ const FileUpload = () => {
     formData.append("file", file);
 
     try {
-      const res = await axios.post("/upload", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      
+      const res = await uploadFile(formData);
 
       const { fileName, filePath } = res.data;
       setUploadedFile({ fileName, filePath });
