@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Message from "./Message";
 import axios from "axios";
-import { toggleButton } from "../helper";
+import { toggleButton, toggleElement } from "../helper";
 
 import "./FileUpload.css";
 import GenerateTree from "./GenerateTree";
@@ -34,9 +34,10 @@ const FileUpload = () => {
       setUploadedFile({ fileName, filePath });
 
       setMessage(`${file.name} file Uploaded`);
+      toggleElement("msg", "block");
 
-      // document.getElementById("btn_upload").disabled = true;
       toggleButton("disable", "btn_upload");
+      toggleButton("enable", "btn_results");
     } catch (err) {
       if (err) {
         setMessage(err.response.data.msg);
@@ -49,12 +50,14 @@ const FileUpload = () => {
     <div>
       <div className='FileUpload'>
         {message && <Message msg={message} />}
+
         <form onSubmit={onSubmitHandler}>
           <div className='ui fluid input'>
             <input
               type='file'
               onChange={onChangeHandler}
               placeholder={filename}
+              id='file_upload'
             />
           </div>
           <div className='btn'>
