@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { toggleButton, toggleElement } from "../helper";
-import Message from "./Message";
+import { getData } from "../services";
 
 import "./GenerateTree.css";
 
@@ -11,8 +10,8 @@ const GenerateTree = (props) => {
   const onFormSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await axios.get("http://localhost:5000/data");
-    setResults(() => [response.data]);
+    const results = await getData("http://localhost:5000/data");
+    setResults(() => [results.data]);
 
     toggleButton("enable", "btn_upload");
     toggleButton("disable", "btn_results");
