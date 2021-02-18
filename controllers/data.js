@@ -18,7 +18,6 @@ exports.getJSONData = async (req, res) => {
     generateTree(jsonArray)
       .then((data) => {
         data.forEach(loopJSON);
-
         res.json(data);
       })
       .catch((err) => console.log(err));

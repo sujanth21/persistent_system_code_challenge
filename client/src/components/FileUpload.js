@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Message from "./Message";
 import axios from "axios";
+import { toggleButton } from "../helper";
 
 import "./FileUpload.css";
 import GenerateTree from "./GenerateTree";
@@ -32,7 +33,10 @@ const FileUpload = () => {
       const { fileName, filePath } = res.data;
       setUploadedFile({ fileName, filePath });
 
-      setMessage("File Uploaded");
+      setMessage(`${file.name} file Uploaded`);
+
+      // document.getElementById("btn_upload").disabled = true;
+      toggleButton("disable", "btn_upload");
     } catch (err) {
       if (err) {
         setMessage(err.response.data.msg);
@@ -54,12 +58,17 @@ const FileUpload = () => {
             />
           </div>
           <div className='btn'>
-            <input type='submit' value='Upload' className='ui button green' />
+            <input
+              id='btn_upload'
+              type='submit'
+              value='Upload'
+              className='ui button green'
+            />
           </div>
         </form>
       </div>
 
-      {uploadedFile.filePath && <GenerateTree />}
+      {uploadedFile.filePath && <GenerateTree file={filename} />}
     </div>
   );
 };
