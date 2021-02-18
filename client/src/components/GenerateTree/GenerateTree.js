@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { toggleButton, toggleElement } from "../helper";
-import { getData } from "../services";
+import { toggleButton, toggleElement } from "../../helper";
+import { getData } from "../../services";
 
 import "./GenerateTree.css";
 

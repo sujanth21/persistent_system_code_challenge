@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Message from "./Message";
-import { uploadFile } from "../services";
-import { toggleButton, toggleElement } from "../helper";
+import Message from "./../Message/Message";
+import { uploadFile } from "../../services";
+import { toggleButton, toggleElement } from "../../helper";
 
 import "./FileUpload.css";
-import GenerateTree from "./GenerateTree";
+import GenerateTree from "./../GenerateTree/GenerateTree";
 
 const FileUpload = () => {
   const [file, setFile] = useState("");
@@ -24,7 +24,6 @@ const FileUpload = () => {
     formData.append("file", file);
 
     try {
-      
       const res = await uploadFile(formData);
 
       const { fileName, filePath } = res.data;
