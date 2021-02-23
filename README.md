@@ -83,4 +83,21 @@ Overall this project tasks are little bit challenge for me (as a novice web appl
 4. Semantic UI (https://semantic-ui.com/)
 5. CSV to JSON (https://www.npmjs.com/package/csvtojson)
 
+### Project Screenshots
+
+1. Home screen
+   ![home screen](https://github.com/sujanth21/persistent_system_code_challenge/blob/master/client/public/screenshots/2.PNG)
+
+2. File upload
+   ![file upload](https://github.com/sujanth21/persistent_system_code_challenge/blob/master/client/public/screenshots/3.PNG)
+
+3. Final Output
+   ![final output](https://github.com/sujanth21/persistent_system_code_challenge/blob/master/client/public/screenshots/4.PNG)
+
+4. JSON data
+   ![JSON data](https://github.com/sujanth21/persistent_system_code_challenge/blob/master/client/public/screenshots/5.PNG)
+
+5. Input data
+   ![Inputs](https://github.com/sujanth21/persistent_system_code_challenge/blob/master/client/public/screenshots/input.PNG)
+
 ## Thank you for this opportunity
